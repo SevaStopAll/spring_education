@@ -1,9 +1,6 @@
 package ru.sevastopall.spring_education.AOP.aspects;
 
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 import ru.sevastopall.spring_education.AOP.Student;
 
@@ -13,10 +10,10 @@ import java.util.List;
 @Aspect
 public class UniversityLoggingAspect {
 
-    @Before("execution(* getStudents())")
+/*    @Before("execution(* getStudents())")
     public void beforeGetStudentsLoggingAdvice() {
         System.out.println("Логируем получение списка студентов перед методом getStudents");
-    }
+    }*/
 
 
     /*@AfterReturning(pointcut = "execution(* getStudents())", returning = "students")
@@ -34,10 +31,19 @@ public class UniversityLoggingAspect {
         System.out.println("Логируем получение списка студентов после метода getStudents");
     }*/
 
-    @AfterThrowing(pointcut = "execution(* getStudents())",
+/*    @AfterThrowing(pointcut = "execution(* getStudents())",
     throwing = "exception")
     public void afterThrowingStudentsLoggingAdvice(Throwable exception) {
         System.out.println("afterThrowingStudentsLoggingAdvice: логируем выброс исключения " + exception);
 
-    }
+    }*/
+
+/*    @After("execution(* getStudents())")
+        public void afterGetStudentsLoggingAdvice() {
+        System.out.println("Логируем окончание работы метода getStudents()");
+    }*/
+
+
+
+
 }
