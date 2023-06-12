@@ -1,20 +1,23 @@
-package ru.sevastopall.spring_education.hibernate;
+package ru.sevastopall.spring_education.hibernate.one_to_many_bi;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.sevastopall.spring_education.hibernate.entity.Employee;
+import ru.sevastopall.spring_education.hibernate.one_to_many_bi.entity.Department;
+import ru.sevastopall.spring_education.hibernate.one_to_many_bi.entity.Employee;
 
 public class Main {
-
     public static void main(String[] args) {
         try (SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
-                .buildSessionFactory()) {
-            Session session = factory.getCurrentSession();
-            Employee employee = new Employee("Vsevolod", "Ivanov", "IT", 500);
+                .addAnnotatedClass(Department.class)
+                .buildSessionFactory();
+             Session session = factory.getCurrentSession())
+        {
+
             session.beginTransaction();
-            session.save(employee);
+
+
             session.getTransaction().commit();
         }
     }

@@ -1,9 +1,9 @@
-package ru.sevastopall.spring_education.hibernate;
+package ru.sevastopall.spring_education.hibernate.one_to_one;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.sevastopall.spring_education.hibernate.entity.Employee;
+import ru.sevastopall.spring_education.hibernate.one_to_many_bi.entity.Employee;
 
 import java.util.List;
 

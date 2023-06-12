@@ -1,23 +1,23 @@
-package ru.sevastopall.spring_education.hibernate;
+package ru.sevastopall.spring_education.hibernate.one_to_one;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.sevastopall.spring_education.hibernate.entity.Employee;
+import ru.sevastopall.spring_education.hibernate.one_to_one.entity.Employee;
 
-import java.util.List;
-
-public class Main4 {
+public class Main2 {
 
     public static void main(String[] args) {
         try (SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
+            Employee employee = new Employee("Oleg", "Sidorov", "HR", 700);
             session.beginTransaction();
-/*            Employee employee = session.get(Employee.class, 1);
-            employee.setSalary(1500);*/
-            session.createQuery("update Employee set salary = 1000 where name = 'Oleg'").executeUpdate();
+            session.save(employee);
+            int myId = employee.getId();
+            Employee employee2 = session.get(Employee.class, myId);
+            System.out.println(employee2.getName());
             session.getTransaction().commit();
         }
     }
